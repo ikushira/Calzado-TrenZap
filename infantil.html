@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TrendZap - Calzado para Todos</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header con logo y navegación -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">TrendZap</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Mujer</a></li>
+          <li><a href="#">Hombre</a></li>
+          <li><a href="#">Deportivo</a></li>
+          <li><a href="#">Infantil</a></li>
+          <li><a href="carrito.html">🛒 Carrito</a></li>
+          <li><a href="login.html">Iniciar Sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sección Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Descubre el estilo que camina contigo</h2>
+      <p>Calzado para Mujer, Hombre, Deportivo e Infantil</p>
+      <a href="#productos" class="btn">Ver Productos</a>
+    </div>
+  </section>
+
+  <!-- Sección de Productos -->
+  <section id="productos" class="productos">
+    <h2>Nuestros Productos</h2>
+    <div id="lista-productos" class="productos-grid">
+      <!-- Aquí se cargan los productos desde Firebase -->
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 TrendZap. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  
+</body>
+</html>
