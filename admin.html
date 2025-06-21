@@ -5,8 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panel de Administración - TrendZap</title>
   <link rel="stylesheet" href="css/style.css" />
-  <script type="module" src="js/firebase-config.js"></script>
-  <script type="module" src="js/admin.js" defer></script>
+  <!-- Scripts de Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <!-- Configuración de Firebase -->
+  <script src="js/firebase-config.js"></script>
+  <!-- Script de administración -->
+  <script src="js/admin.js" defer></script>
 </head>
 <body>
   <header>
@@ -22,6 +28,8 @@
   <main>
     <section class="formulario-admin">
       <h2>Agregar producto</h2>
+      <!-- Contenedor para mensajes -->
+      <div id="mensaje-estado" style="display:none; margin-bottom:15px; padding:10px; border-radius:5px;"></div>
       <form id="producto-form">
         <label for="nombre">Nombre del producto:</label>
         <input type="text" id="nombre" name="nombre" required />

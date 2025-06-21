@@ -1,21 +1,19 @@
 // js/main.js
 // Script principal para mostrar productos desde Firebase en index.html
 
-// Importa Firestore desde tu configuración de Firebase
-import { db } from './firebase-config.js';
-import { collection, getDocs } from 'firebase/firestore';
-
-// Función para renderizar productos en la página principal
-async function cargarProductos() {
+document.addEventListener("DOMContentLoaded", async () => {
   const contenedor = document.getElementById('lista-productos');
-  contenedor.innerHTML = '';
+  if (!contenedor) return;
+
+  contenedor.innerHTML = 'Cargando productos...';
 
   try {
-    const querySnapshot = await getDocs(collection(db, 'productos'));
+    const querySnapshot = await firebase.firestore().collection("productos").orderBy("creado", "desc").get();
     if (querySnapshot.empty) {
       contenedor.innerHTML = '<p>No hay productos disponibles.</p>';
       return;
     }
+    contenedor.innerHTML = '';
     querySnapshot.forEach((doc) => {
       const producto = doc.data();
 
@@ -28,7 +26,7 @@ async function cargarProductos() {
         <p>${producto.descripcion || 'Sin descripción'}</p>
         <p><strong>$${producto.precio ? producto.precio.toLocaleString() : '0'}</strong></p>
         <p><b>Categoría:</b> ${producto.categoria || 'Sin categoría'}</p>
-        <p><b>Tallas:</b> ${producto.tallas ? producto.tallas.join(', ') : 'No especificadas'}</p>
+        <p><b>Tallas:</b> ${producto.tallas ? (Array.isArray(producto.tallas) ? producto.tallas.join(', ') : producto.tallas) : 'No especificadas'}</p>
         <p><b>Stock:</b> ${producto.stock ?? 'No especificado'}</p>
       `;
 
@@ -38,9 +36,4 @@ async function cargarProductos() {
     console.error("Error al cargar productos:", error);
     contenedor.innerHTML = '<p>Error al cargar productos.</p>';
   }
-}
-
-// Ejecutar al cargar la página
-if (document.getElementById('lista-productos')) {
-  cargarProductos();
-}
+});
